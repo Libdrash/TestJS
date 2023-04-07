@@ -1,0 +1,29 @@
+body {
+  background-color: rgb(20, 20, 20);
+  font-family: "Roboto", sans-serif;
+  padding: 2rem 1rem;
+}
+
+.header__person {
+  color: #fff;
+  display: flex;
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+.header__person p {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+.searchInput {
+  width: 285px;
+  background: url("imagesSearch/icon/loupe.svg") no-repeat rgb(45, 44, 44) 15px;
+  height: 35px;
+  border-radius: 10px;
+  padding-left: 40px;
+  border-color: transparent;
+  color: #fff;
+}
+
+.product1 {
+  color: #fff;
+}
