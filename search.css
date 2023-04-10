@@ -1,9 +1,12 @@
 body {
-  background-color: rgb(20, 20, 20);
+  background-color: #151515;
   font-family: "Roboto", sans-serif;
   padding: 2rem 1rem;
 }
-
+main {
+  max-height: 500px;
+  overflow-x: scroll;
+}
 .header__person {
   color: #fff;
   display: flex;
@@ -16,14 +19,79 @@ body {
 }
 .searchInput {
   width: 285px;
-  background: url("imagesSearch/icon/loupe.svg") no-repeat rgb(45, 44, 44) 15px;
+  background: url("imagesSearch/icon/loupe.svg") no-repeat #252525 15px;
   height: 35px;
   border-radius: 10px;
   padding-left: 40px;
   border-color: transparent;
   color: #fff;
+  margin-bottom: 50px;
 }
 
-.product1 {
+.products {
   color: #fff;
+  display: flex;
+  flex-direction: column;
+  max-width: 147px;
+  gap: 5px;
+  margin-bottom: 15px;
+  min-width: 147px;
+  position: relative;
+}
+.searchProducts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.products img {
+  border-radius: 15px;
+  margin-bottom: 5px;
+}
+.products p {
+  margin: 0;
+}
+.products p:first-of-type {
+  font-size: 14px;
+}
+.products p:last-of-type,
+b,
+span {
+  font-size: 12px;
+}
+
+.products button {
+  position: absolute;
+  background-color: #252525;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  border: 0;
+  transform: translateX(110px);
+  margin-top: 10px;
+  background-image: url("imagesSearch/icon/heartBlack.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.products p:nth-child(4) {
+  color: #7e7e7e;
+  font-weight: 100;
+}
+.counting {
+  display: flex;
+  justify-content: space-between;
+}
+.products span {
+  color: #7e7e7e;
+  font-weight: 100;
+}
+.products img:last-of-type {
+  margin: 0;
+}
+
+@media (min-width: 400px) {
+  .searchProducts {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
 }

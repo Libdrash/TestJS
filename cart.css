@@ -1,0 +1,22 @@
+body {
+  background-color: #151515;
+  font-family: "Roboto", sans-serif;
+  position: relative;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.return {
+  background-color: #252525;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 0;
+  background-image: url("imagesSearch/icon/returnButton.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+}
+h3 {
+  text-align: center;
+  color: #fff;
+}
