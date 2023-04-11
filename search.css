@@ -32,10 +32,9 @@ main {
   color: #fff;
   display: flex;
   flex-direction: column;
-  max-width: 147px;
-  gap: 5px;
+  max-width: 148px;
+  gap: 10px;
   margin-bottom: 15px;
-  min-width: 147px;
   position: relative;
 }
 .searchProducts {
@@ -43,9 +42,11 @@ main {
   flex-wrap: wrap;
   gap: 7px;
 }
-.products img {
+.products a img {
   border-radius: 15px;
   margin-bottom: 5px;
+  min-width: 147px;
+  max-width: 148px;
 }
 .products p {
   margin: 0;

@@ -1,12 +1,3 @@
-const object = {
-  name: "Douglas Neal",
-  avatar: "imagesSearch/profileAvatar.svg",
-  status: "imagesSearch/profileStatus.svg",
-}
-localStorage.setItem("person", JSON.stringify(object))
-const raw = localStorage.getItem("person")
-const person = JSON.parse(raw)
-
 const productList = [
   {
     id: 1,
@@ -64,19 +55,18 @@ const productList = [
   },
 ]
 // СТРАНИЦА SEARCH
-
 localStorage.setItem("products", JSON.stringify(productList))
 const raw1 = localStorage.getItem("products")
 const products = JSON.parse(raw1)
 
 const searchProducts = document.querySelector(".searchProducts")
-
 const showSearch = (block) => {
+  if (!block) return
   block.innerHTML = productList.map((el) => {
-    const { description, material, price, rating, img } = el
+    const { description, material, price, rating, img, isLiked } = el
     return `<div class='products'>
     <a href="product.html"><img src="${img}" /></a>
-    <button class="heart"></button>
+    <button id="heart" value="${isLiked}"></button>
   <p>${description}</p>
 <p>${material}</p>
 <div class="counting"><b>&#8364; ${price}</b>
@@ -85,45 +75,45 @@ const showSearch = (block) => {
   })
 }
 showSearch(searchProducts)
-let heart = document.querySelector(".heart")
-heart.onclick = () => (heart.style.backgroundImage = "url('imagesSearch/icon/heartWhite.svg')")
-///ochen grustno
+console.log(products)
+console.log(products[0])
+let lol = products[0]
+console.log(lol.isLiked)
+const like = document.querySelector("#heart")
+console.log(like)
+// like.addEventListener("click", () => {
+//   // products.map((item) => )
+//   // if () {
+//   //   console.log(7)
+//   // }
+// })
 
 // СТРАНИЦА ПРОДУКТА
-let returnButton = document.querySelector(".return")
 
-// const colorChange = () => {
-//   let random = colors[Math.floor(Math.random() * colors.length)]
-//   colorize.style.backgroundColor = random
-// }
-// button.addEventListener("click", colorChange)
-
-const Cart = [
+// КОРЗИНА
+export const Cart = [
   {
-    product: {
-      id: 5,
-      description: `Modern light clothes`,
-      material: "Recycled",
-      price: 340,
-    },
-    quantity: 4,
-  },
-  {
-    product: {
-      id: 2,
-      description: `Clean Climb Sweatshirt`,
-      material: "Recucled",
-      price: 75,
-    },
+    img: "imagesSearch/productId5.svg",
+    id: 5,
+    description: `Modern light clothes`,
+    material: "Recycled",
+    price: 340,
     quantity: 1,
   },
   {
-    product: {
-      id: 6,
-      description: `Powder Town HeadBand`,
-      material: "Recycled",
-      price: 40,
-    },
+    img: "imagesSearch/productId2.svg",
+    id: 2,
+    description: `Clean Climb Sweatshirt`,
+    material: "Recucled",
+    price: 75,
+    quantity: 1,
+  },
+  {
+    img: "imagesSearch/productId6.svg",
+    id: 6,
+    description: `Powder Town HeadBand`,
+    material: "Recycled",
+    price: 40,
     quantity: 1,
   },
 ]
@@ -131,3 +121,6 @@ const Cart = [
 localStorage.setItem("cart", JSON.stringify(Cart))
 const raw2 = localStorage.getItem("cart")
 const cart = JSON.parse(raw2)
+
+import { showCart, cartProducts, cartQuantity } from "./cart.js"
+showCart(cartProducts)
