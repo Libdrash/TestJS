@@ -58,15 +58,18 @@ const productList = [
 localStorage.setItem("products", JSON.stringify(productList))
 const raw1 = localStorage.getItem("products")
 const products = JSON.parse(raw1)
+// function handleClickButtonHeartbeat() {
+
+// }
 
 const searchProducts = document.querySelector(".searchProducts")
 const showSearch = (block) => {
   if (!block) return
-  block.innerHTML = productList.map((el) => {
-    const { description, material, price, rating, img, isLiked } = el
+  block.innerHTML = products.map((el) => {
+    const { description, material, price, rating, img } = el
     return `<div class='products'>
     <a href="product.html"><img src="${img}" /></a>
-    <button id="heart" value="${isLiked}"></button>
+    <button  id="heart"></button>
   <p>${description}</p>
 <p>${material}</p>
 <div class="counting"><b>&#8364; ${price}</b>
@@ -75,18 +78,56 @@ const showSearch = (block) => {
   })
 }
 showSearch(searchProducts)
-console.log(products)
-console.log(products[0])
-let lol = products[0]
-console.log(lol.isLiked)
-const like = document.querySelector("#heart")
-console.log(like)
-// like.addEventListener("click", () => {
-//   // products.map((item) => )
-//   // if () {
-//   //   console.log(7)
-//   // }
+// onclick="${() => console.log(123)}"
+
+// const btnLike = document.querySelectorAll("#heart")
+// console.log(btnLike)
+// products.map()
+// products.map((item) => item.isLiked)
+
+// btnLike.forEach((btn,index) => {
+//   btn.addEventListener("click", () => {
+//     btn.style.backgroundImage = `url("imagesSearch/icon/heartWhite.svg")`
+//     // localStorage.getItem('products')[index]
+
+// сравнить индексы!!! и типа перезаписать в локал сторейдж
+//   })
 // })
+// ТИПА ТОГО НАДО ПОПРОБОВАТЬ
+
+// )
+// const colorChange = (block) => {
+//   block.map((btn) => btn.onclick = )
+// }
+// colorChange(btnLike)
+
+// searchProducts.onclick = function (event) {
+//   let target = event.target
+//   console.log(target)
+//   if (target.id != "heart") return
+
+//   changeColor1(target)
+// }
+// function changeColor1(target) {
+//   target.style.backgroundImage = `url("imagesSearch/icon/heartWhite.svg")`
+// }
+
+// searchProducts.onclick = function (event) {
+//   let target = event.target
+//   if (target.tagName != "a") return
+//   console.log(target)
+// }
+
+// const like = () => {
+//   if (!isLike) {
+//     likeButton.style.backgroundImage = `url("imagesSearch/icon/heartWhite.svg")`
+//     lol.isLiked = true
+//   }
+//   // if (lol.isLiked) {
+//   //   lol.isLiked = false
+//   // }
+// }
+// likeButton.addEventListener("click", like)
 
 // СТРАНИЦА ПРОДУКТА
 
