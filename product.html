@@ -8,26 +8,28 @@
     <link rel="stylesheet" href="product.css" />
   </head>
   <body>
-    <header>
-      <button class="return" type="button" onclick="history.back()"></button>
-      <button class="liked"></button>
-    </header>
-    <main></main>
-    <footer>
-      <hr />
-      <div class="number">
-        <p>Clean Climb Sweatshirt</p>
-        <div class="calculate">
-          <button class="minus" type="button" onclick="this.nextElementSibling.stepDown()">&ndash;</button>
-          <input type="number" readonly min="0" value="1" />
-          <button class="plus" type="button" onclick="this.previousElementSibling.stepUp()">&#43;</button>
+    <div class="productContainer">
+      <header>
+        <button class="return" type="button" onclick="history.back()"></button>
+        <button class="liked"></button>
+      </header>
+      <main></main>
+      <footer>
+        <hr />
+        <div class="number">
+          <p>Clean Climb Sweatshirt</p>
+          <div class="calculate">
+            <button class="minus" type="button" onclick="this.nextElementSibling.stepDown()">&ndash;</button>
+            <input type="number" readonly min="1" value="1" />
+            <button class="plus" type="button" onclick="this.previousElementSibling.stepUp()">&#43;</button>
+          </div>
         </div>
-      </div>
-      <a href="cart.html">
-        <button onclick="console.log(123)" class="addSum"><b>Add |</b> <b>&#8364; 75</b></button>
-      </a>
-    </footer>
-    <script type="module" src="index.js"></script>
-    <script type="module" src="cart.js"></script>
+        <a href="cart.html">
+          <button class="addSum"><b>Add |</b> <b>&#8364; 75</b></button>
+        </a>
+      </footer>
+
+      <script type="module" src="product.js"></script>
+    </div>
   </body>
 </html>

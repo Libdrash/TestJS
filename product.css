@@ -1,11 +1,17 @@
 body {
+  margin: 0;
+}
+.productContainer {
   background-image: url("imagesSearch/productMainImage.svg");
   background-repeat: no-repeat;
-  margin: 0;
   max-width: 376px;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
+  position: relative;
+  background-size: 100%;
+  background-position-x: center;
 }
+
 .liked {
   background-color: #252525;
   height: 50px;
@@ -15,6 +21,9 @@ body {
   background-image: url("imagesSearch/icon/heartBlack.svg");
   background-repeat: no-repeat;
   background-position: center;
+  position: absolute;
+  top: 50px;
+  right: 25px;
 }
 .return {
   background-color: #252525;
@@ -25,11 +34,10 @@ body {
   background-image: url("imagesSearch/icon/returnButton.svg");
   background-repeat: no-repeat;
   background-position: center;
+  position: absolute;
+  top: 50px;
 }
 header {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 50px;
   padding-left: 25px;
   padding-right: 25px;
 }
@@ -60,7 +68,7 @@ hr {
   background-color: transparent;
   color: #fff;
   text-align: center;
-  max-width: 10px;
+  max-width: 15px;
   border: transparent;
   font-size: 15px;
 }
