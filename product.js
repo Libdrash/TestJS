@@ -39,3 +39,52 @@ minus.addEventListener("click", () => {
   localStorage.setItem("communicate", JSON.stringify(communicate))
   addSum.textContent = `Add | ${(communicate.price * quantity.value).toFixed(2)}`
 }) //вычитание и умножение
+
+const Cart = JSON.parse(localStorage.getItem("cart"))
+//ВАРИАНТ 1
+// Object.keys(communicate).forEach((key) => console.log(key == "id"))
+addSum.onclick = () => {
+  document.location.href = "cart.html"
+  for (let key in communicate) {
+    if (key == "id") {
+      let isAddedToCart = false
+      //функция которая определит есть ли в корзине элемент и потом уже мапать не испольховать два источника правды
+      // беру объект делаю махинации и потом сохраняю объект в локстор
+      Cart.map((item) => {
+        // if (Cart.value === null) {
+        //   Cart.push(communicate)}
+        if (item.id === communicate.id) {
+          item.quantity += communicate.quantity
+          isAddedToCart = true
+          return item
+        }
+        // if (!isAddedToCart) {
+        //   Cart.push(communicate)
+        // }
+        localStorage.setItem("cart", JSON.stringify(Cart))
+      })
+    }
+  }
+}
+//ВАРИАНТ 2
+// addSum.onclick = () => {
+//   document.location.href = "cart.html"
+//   let isAddedToCart = false
+//   Cart.map((item) => {
+//     if (Cart.value === null) {
+//       Cart.push(communicate)
+//     }
+// if (item.id === communicate.id) {
+//   item.quantity += communicate.quantity
+//   isAddedToCart = true
+//   return item
+// }
+//   if (!isAddedToCart) {
+//     Cart.push(communicate)
+//   }
+//   localStorage.setItem("cart", JSON.stringify(Cart))
+// })
+// }
+// Cart.map((item) => console.log(item.id))
+
+// console.log(communicate.id)
