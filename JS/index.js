@@ -1,4 +1,9 @@
-// // СТРАНИЦА SEARCH ПРОДУКТОВ
+//Добавление в localstorage
+//ЭТО НАДО РАССКОММЕНТИТЬ
+// localStorage.setItem("cart", JSON.stringify(cartOfProducts))
+// localStorage.setItem("communicate", JSON.stringify(com))
+// localStorage.setItem("products", JSON.stringify(productList))
+//полотно продуктов
 const productList = [
   {
     id: 1,
@@ -55,7 +60,29 @@ const productList = [
     img: "imagesSearch/productId6.svg",
   },
 ]
-// localStorage.setItem("products", JSON.stringify(productList))
+//активная карточка коммуникации
+const com = {
+  description: "Modern light clothes",
+  id: 3,
+  img: "imagesSearch/productId3.svg",
+  material: "Dress modern",
+  price: 212.99,
+  isLiked: false,
+}
+//корзина
+const cartOfProducts = [
+  {
+    description: "Modern light clothes",
+    id: 3,
+    img: "imagesSearch/productId3.svg",
+    material: "Dress modern",
+    price: 212.99,
+    quantity: 1,
+  },
+]
+
+//начало
+// СТРАНИЦА SEARCH ПРОДУКТОВ
 
 const products = JSON.parse(localStorage.getItem("products"))
 const searchProducts = document.querySelector(".searchProducts")
