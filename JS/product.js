@@ -13,7 +13,7 @@ quantity.value = communicate.quantity //количество отправляе�
 addSum.textContent = `Add | ${(communicate.price * quantity.value).toFixed(2)}` //умножает количество на цену
 const products = JSON.parse(localStorage.getItem("products"))
 
-function oneLike(btn, index) {
+function oneLike(btn) {
   const communicate = JSON.parse(localStorage.getItem("communicate"))
   if (communicate.isLiked) {
     btn.style.backgroundImage = `url("imagesSearch/icon/heartWhite.svg")`
