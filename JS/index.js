@@ -1,8 +1,5 @@
 //Добавление в localstorage
-//ЭТО НАДО РАССКОММЕНТИТЬ
-// localStorage.setItem("cart", JSON.stringify(cartOfProducts))
-// localStorage.setItem("communicate", JSON.stringify(com))
-// localStorage.setItem("products", JSON.stringify(productList))
+//ниже нужно расскомментить
 //полотно продуктов
 const productList = [
   {
@@ -80,6 +77,10 @@ const cartOfProducts = [
     quantity: 1,
   },
 ]
+//ЭТО НАДО РАССКОММЕНТИТЬ
+// localStorage.setItem("cart", JSON.stringify(cartOfProducts))
+// localStorage.setItem("communicate", JSON.stringify(com))
+// localStorage.setItem("products", JSON.stringify(productList))
 
 //начало
 // СТРАНИЦА SEARCH ПРОДУКТОВ
