@@ -1,4 +1,61 @@
 // // СТРАНИЦА SEARCH ПРОДУКТОВ
+const productList = [
+  {
+    id: 1,
+    description: `Men's Cotton in Conversion Midweight Rugby Shirt`,
+    material: "Organic",
+    price: 120,
+    rating: "5.0",
+    isLiked: false,
+    img: "imagesSearch/productId1.svg",
+  },
+  {
+    id: 2,
+    description: `Clean Climb Sweatshirt`,
+    material: "Recucled",
+    price: 75,
+    rating: "5.0",
+    isLiked: false,
+    img: "imagesSearch/productId2.svg",
+  },
+  {
+    id: 3,
+    description: `Modern light clothes`,
+    material: "Dress modern",
+    price: 212.99,
+    rating: "5.0",
+    isLiked: false,
+    img: "imagesSearch/productId3.svg",
+  },
+  {
+    id: 4,
+    description: `Modern light clothes`,
+    material: "Dress modern",
+    price: 212.99,
+    rating: "5.0",
+    isLiked: false,
+    img: "imagesSearch/productId4.svg",
+  },
+  {
+    id: 5,
+    description: `Modern light clothes`,
+    material: "Recycled",
+    price: 340,
+    rating: "5.0",
+    isLiked: false,
+    img: "imagesSearch/productId5.svg",
+  },
+  {
+    id: 6,
+    description: `Powder Town HeadBand`,
+    material: "Recycled",
+    price: 40,
+    rating: "5.0",
+    isLiked: false,
+    img: "imagesSearch/productId6.svg",
+  },
+]
+// localStorage.setItem("products", JSON.stringify(productList))
 
 const products = JSON.parse(localStorage.getItem("products"))
 const searchProducts = document.querySelector(".searchProducts")
