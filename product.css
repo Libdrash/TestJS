@@ -1,15 +1,17 @@
 body {
+  background-color: #151515;
   margin: 0;
 }
 .productContainer {
   background-image: url("imagesSearch/productMainImage.svg");
   background-repeat: no-repeat;
-  max-width: 376px;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
   position: relative;
   background-size: 100%;
   background-position-x: center;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .liked {

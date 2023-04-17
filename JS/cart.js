@@ -8,7 +8,7 @@ const showCart = (block) => {
     const { img, description, material, price, quantity } = elem
     return `<div class="product_cart">
         <a href="product.html"><img alt="productPicture" src="${img}" /></a>
-<div><p>${description}</p><p class="material">${material}</p><span>&#8364; ${price}</span></div>
+<div><p class="product_description">${description}</p><p class="material">${material}</p><span>&#8364; ${price}</span></div>
         <div class="product_cart-calculate">
         <button id="minus" class="minusPlusValue" type="button" onclick="this.nextElementSibling.stepDown()">&ndash;</button>
         <input id="quantity" type="number" min="0" value="${quantity}" />

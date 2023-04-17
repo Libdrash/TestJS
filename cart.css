@@ -4,7 +4,8 @@ body {
   position: relative;
   padding-left: 25px;
   padding-right: 25px;
-  margin: 0;
+  margin: 0 auto;
+  max-width: 400px;
   margin-top: 60px;
 }
 .return {
@@ -86,7 +87,8 @@ main {
   display: flex;
   gap: 10px;
   height: 25px;
-  align-self: flex-end;
+  align-self: end;
+  justify-content: end;
 }
 .product_cart-calculate button {
   background-color: transparent;
@@ -113,6 +115,9 @@ main {
   font-weight: 300;
 }
 .cartContainer {
-  max-height: 500px;
+  max-height: 400px;
   overflow-x: scroll;
+}
+.product_description {
+  min-width: 193px;
 }
