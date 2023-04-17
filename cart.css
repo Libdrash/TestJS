@@ -118,6 +118,8 @@ main {
   max-height: 400px;
   overflow-x: scroll;
 }
-.product_description {
-  min-width: 193px;
+@media (min-width: 376px) {
+  .product_description {
+    min-width: 193px;
+  }
 }
