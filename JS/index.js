@@ -1,4 +1,4 @@
-// // СТРАНИЦА SEARCH
+// // СТРАНИЦА SEARCH ПРОДУКТОВ
 
 const products = JSON.parse(localStorage.getItem("products"))
 const searchProducts = document.querySelector(".searchProducts")
@@ -16,6 +16,7 @@ const showSearch = (block) => {
   })
 }
 showSearch(searchProducts)
+//полотно продуктов
 
 const communicate = JSON.parse(localStorage.getItem("communicate"))
 const btnLike = document.querySelectorAll("#heart")
@@ -31,7 +32,7 @@ Array.from(btnLike).map((btn, index) => {
     localStorage.setItem("products", JSON.stringify(products))
   })
 })
-
+//изменение понравившихся
 // СТРАНИЦА Коммуникационного ПРОДУКТА
 
 const productCard = document.querySelectorAll(".products")
@@ -51,8 +52,4 @@ Array.from(productCard).map((card, index) => {
     localStorage.setItem("communicate", JSON.stringify(communicate))
   })
 })
-
-// // КОРЗИНА
-
-const raw2 = localStorage.getItem("cart")
-const cart = JSON.parse(raw2)
+//перенос данных одного продукта на активную карточку

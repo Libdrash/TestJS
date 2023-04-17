@@ -1,3 +1,4 @@
+// КОРЗИНА
 const Cart = JSON.parse(localStorage.getItem("cart"))
 const communicate = JSON.parse(localStorage.getItem("communicate"))
 const cartProducts = document.querySelector(".cartContainer")
@@ -17,6 +18,7 @@ const showCart = (block) => {
   })
 }
 showCart(cartProducts)
+//отображение полотна продуктов в корзине
 const product_cart = document.querySelectorAll(".product_cart")
 const quantityProductInCart = document.querySelector("h3")
 quantityProductInCart.textContent = `Cart: ${product_cart.length}` //количество прод в корзине в заголовок
@@ -55,7 +57,7 @@ Array.from(minus).map((btn, index) => {
     }
   })
 })
-
+//удаление
 const totalBeforeFee = document.querySelector(".totalBeforeFee")
 const totalAfterFee = document.querySelector(".totalAfterFee")
 
@@ -68,7 +70,7 @@ const costProcess = () => {
     totalCostStart += cost
   }
 }
-costProcess()
+costProcess() //подсчет в тотал внизу при открытии страницы
 totalBeforeFee.textContent = totalCostStart
 totalAfterFee.textContent = totalCostStart
 
@@ -86,3 +88,4 @@ Array.from(minusPlusValue).map((btn) => {
     }
   })
 })
+//подсчет в моменте

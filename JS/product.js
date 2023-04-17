@@ -1,3 +1,4 @@
+//КОММУНИКАЦИЯ МЕЖДУ ПРОДУКТАМИ И КОРЗИНОЙ
 const communicate = JSON.parse(localStorage.getItem("communicate"))
 
 const productContainer = document.querySelector(".productContainer ")
@@ -29,7 +30,7 @@ function oneLike(btn) {
     localStorage.setItem("products", JSON.stringify(products))
   })
 }
-oneLike(likeButton)
+oneLike(likeButton) //изменение понравившегося
 
 const plus = document.querySelector(".plus")
 const minus = document.querySelector(".minus")
@@ -59,3 +60,4 @@ addSum.onclick = () => {
   }
   localStorage.setItem("cart", JSON.stringify(Cart))
 }
+//сравнение имеющихся продуктов и добавление
