@@ -77,7 +77,7 @@ const cartOfProducts = [
     quantity: 1,
   },
 ]
-//ЭТО НАДО РАССКОММЕНТИТЬ
+//ЭТО НАДО РАССКОММЕНТИТИРОВАТЬ СОХРАНИТЬ И ЗАКОММЕНТИРОВАТЬ:
 // localStorage.setItem("cart", JSON.stringify(cartOfProducts))
 // localStorage.setItem("communicate", JSON.stringify(com))
 // localStorage.setItem("products", JSON.stringify(productList))
