@@ -3,12 +3,10 @@ const communicate = JSON.parse(localStorage.getItem("communicate"))
 const cartProducts = document.querySelector(".cartContainer")
 
 const showCart = (block) => {
-  // if (Cart == undefined) return
   block.innerHTML = Cart.map((elem) => {
     const { img, description, material, price, quantity } = elem
-    // if (cart[index] == null) return
     return `<div class="product_cart">
-        <a href="product.html"><img src="${img}" /></a>
+        <a href="product.html"><img alt="productPicture" src="${img}" /></a>
 <div><p>${description}</p><p class="material">${material}</p><span>&#8364; ${price}</span></div>
         <div class="product_cart-calculate">
         <button id="minus" class="minusPlusValue" type="button" onclick="this.nextElementSibling.stepDown()">&ndash;</button>
@@ -48,15 +46,16 @@ Array.from(minus).map((btn, index) => {
     Cart[index].quantity = +quantityInputs[index].value
     localStorage.setItem("cart", JSON.stringify(Cart))
     if (Cart[index].quantity === 0) {
-      deleteFunction()
+      Cart.splice(index, 1)
+      for (let i = 0; i < Cart.length; i++) {
+        localStorage.setItem("item" + i, Cart[i])
+      }
+      localStorage.setItem("cart", JSON.stringify(Cart))
+      location.reload()
     }
   })
 })
-const deleteFunction = () => {
-  // delete Cart[id]
-  console.log("Это бы удалить")
-  //Да что такое это ваше удалять
-}
+
 const totalBeforeFee = document.querySelector(".totalBeforeFee")
 const totalAfterFee = document.querySelector(".totalAfterFee")
 
@@ -87,16 +86,3 @@ Array.from(minusPlusValue).map((btn) => {
     }
   })
 })
-
-//На случай смерти корзины
-// const cartOfProducts = [
-//   {
-//     description: "Modern light clothes",
-//     id: 3,
-//     img: "imagesSearch/productId3.svg",
-//     material: "Dress modern",
-//     price: 212.99,
-//     quantity: 1,
-//   },
-// ]
-// localStorage.setItem("cart", JSON.stringify(cartOfProducts))

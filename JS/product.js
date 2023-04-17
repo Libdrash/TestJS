@@ -11,8 +11,9 @@ description.textContent = communicate.description //название
 quantity.value = communicate.quantity //количество отправляется в счетчик
 
 addSum.textContent = `Add | ${(communicate.price * quantity.value).toFixed(2)}` //умножает количество на цену
+const products = JSON.parse(localStorage.getItem("products"))
 
-function oneLike(btn) {
+function oneLike(btn, index) {
   const communicate = JSON.parse(localStorage.getItem("communicate"))
   if (communicate.isLiked) {
     btn.style.backgroundImage = `url("imagesSearch/icon/heartWhite.svg")`
@@ -23,9 +24,12 @@ function oneLike(btn) {
       communicate.isLiked ? "imagesSearch/icon/heartWhite.svg" : "imagesSearch/icon/heartBlack.svg"
     }`
     localStorage.setItem("communicate", JSON.stringify(communicate))
+    let findProduct = products.find((el) => el.id === communicate.id)
+    findProduct.isLiked = communicate.isLiked
+    localStorage.setItem("products", JSON.stringify(products))
   })
 }
-oneLike(likeButton) //стаивит лайк/ почему-то не видит при переходе со страницы в локалсторейдже значение исЛайкед? хотя прописывалось в него и товары лайки на серче влияют на ислайкд в лок стор
+oneLike(likeButton)
 
 const plus = document.querySelector(".plus")
 const minus = document.querySelector(".minus")
@@ -41,50 +45,17 @@ minus.addEventListener("click", () => {
 }) //вычитание и умножение
 
 const Cart = JSON.parse(localStorage.getItem("cart"))
-//ВАРИАНТ 1
-// Object.keys(communicate).forEach((key) => console.log(key == "id"))
-addSum.onclick = () => {
-  document.location.href = "cart.html"
-  for (let key in communicate) {
-    if (key == "id") {
-      let isAddedToCart = false
-      //функция которая определит есть ли в корзине элемент и потом уже мапать не испольховать два источника правды
-      // беру объект делаю махинации и потом сохраняю объект в локстор
-      Cart.map((item) => {
-        // if (Cart.value === null) {
-        //   Cart.push(communicate)}
-        if (item.id === communicate.id) {
-          item.quantity += communicate.quantity
-          isAddedToCart = true
-          return item
-        }
-        // if (!isAddedToCart) {
-        //   Cart.push(communicate)
-        // }
-        localStorage.setItem("cart", JSON.stringify(Cart))
-      })
-    }
-  }
-}
-//ВАРИАНТ 2
-// addSum.onclick = () => {
-//   document.location.href = "cart.html"
-//   let isAddedToCart = false
-//   Cart.map((item) => {
-//     if (Cart.value === null) {
-//       Cart.push(communicate)
-//     }
-// if (item.id === communicate.id) {
-//   item.quantity += communicate.quantity
-//   isAddedToCart = true
-//   return item
-// }
-//   if (!isAddedToCart) {
-//     Cart.push(communicate)
-//   }
-//   localStorage.setItem("cart", JSON.stringify(Cart))
-// })
-// }
-// Cart.map((item) => console.log(item.id))
 
-// console.log(communicate.id)
+addSum.onclick = () => {
+  const found = Cart.find((item) => item.id === communicate.id)
+  document.location.href = "cart.html"
+  switch (found) {
+    case undefined:
+      Cart.push(communicate)
+      break
+    case found:
+      found.quantity += communicate.quantity
+      break
+  }
+  localStorage.setItem("cart", JSON.stringify(Cart))
+}
