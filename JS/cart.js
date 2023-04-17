@@ -71,8 +71,8 @@ const costProcess = () => {
   }
 }
 costProcess() //подсчет в тотал внизу при открытии страницы
-totalBeforeFee.textContent = totalCostStart
-totalAfterFee.textContent = totalCostStart
+totalBeforeFee.textContent = totalCostStart.toFixed(2)
+totalAfterFee.textContent = totalCostStart.toFixed(2)
 
 const minusPlusValue = document.querySelectorAll(".minusPlusValue")
 Array.from(minusPlusValue).map((btn) => {
@@ -83,9 +83,22 @@ Array.from(minusPlusValue).map((btn) => {
       const { quantity, price } = product
       const cost = quantity * price
       totalCost += cost
-      totalBeforeFee.textContent = totalCost
-      totalAfterFee.textContent = totalCost
+      totalBeforeFee.textContent = totalCost.toFixed(2)
+      totalAfterFee.textContent = totalCost.toFixed(2)
     }
   })
 })
 //подсчет в моменте
+const cart__buttonPay = document.querySelector(".cart__buttonPay")
+
+const payForThePurchcase = []
+localStorage.setItem("pay", JSON.stringify(payForThePurchcase))
+const pay = JSON.parse(localStorage.getItem("pay"))
+console.log(...Cart)
+cart__buttonPay.addEventListener("click", (index) => {
+  pay.push(...Cart)
+  localStorage.setItem("pay", JSON.stringify(pay))
+  Cart.splice(index)
+  localStorage.setItem("cart", JSON.stringify(Cart))
+  location.reload()
+})

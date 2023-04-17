@@ -1,6 +1,3 @@
-//Добавление в localstorage
-//ниже нужно расскомментить
-//полотно продуктов
 const productList = [
   {
     id: 1,
@@ -57,35 +54,27 @@ const productList = [
     img: "imagesSearch/productId6.svg",
   },
 ]
-//активная карточка коммуникации
-const com = {
-  description: "Modern light clothes",
-  id: 3,
-  img: "imagesSearch/productId3.svg",
-  material: "Dress modern",
-  price: 212.99,
-  isLiked: false,
-}
-//корзина
-const cartOfProducts = [
-  {
-    description: "Modern light clothes",
-    id: 3,
-    img: "imagesSearch/productId3.svg",
-    material: "Dress modern",
-    price: 212.99,
-    quantity: 1,
-  },
-]
-//ЭТО НАДО РАССКОММЕНТИТИРОВАТЬ СОХРАНИТЬ И ЗАКОММЕНТИРОВАТЬ:
-// localStorage.setItem("cart", JSON.stringify(cartOfProducts))
-// localStorage.setItem("communicate", JSON.stringify(com))
-// localStorage.setItem("products", JSON.stringify(productList))
 
+const communication = {}
+const cartOfProducts = []
+
+const communicationGet = JSON.parse(localStorage.getItem("communicate"))
+const productsGet = JSON.parse(localStorage.getItem("products"))
+const cartGet = JSON.parse(localStorage.getItem("cart"))
+if (!productsGet) {
+  localStorage.setItem("products", JSON.stringify(productList))
+}
+if (!communicationGet) {
+  localStorage.setItem("communicate", JSON.stringify(communication))
+}
+if (!cartGet) {
+  localStorage.setItem("cart", JSON.stringify(cartOfProducts))
+}
 //начало
 // СТРАНИЦА SEARCH ПРОДУКТОВ
 
 const products = JSON.parse(localStorage.getItem("products"))
+
 const searchProducts = document.querySelector(".searchProducts")
 const showSearch = (block) => {
   block.innerHTML = products.map((el) => {
@@ -104,6 +93,7 @@ showSearch(searchProducts)
 //полотно продуктов
 
 const communicate = JSON.parse(localStorage.getItem("communicate"))
+
 const btnLike = document.querySelectorAll("#heart")
 Array.from(btnLike).map((btn, index) => {
   if (products[index].isLiked) {

@@ -1,4 +1,5 @@
 //КОММУНИКАЦИЯ МЕЖДУ ПРОДУКТАМИ И КОРЗИНОЙ
+
 const communicate = JSON.parse(localStorage.getItem("communicate"))
 
 const productContainer = document.querySelector(".productContainer ")
