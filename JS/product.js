@@ -1,6 +1,10 @@
 //КОММУНИКАЦИЯ МЕЖДУ ПРОДУКТАМИ И КОРЗИНОЙ
-
 const communicate = JSON.parse(localStorage.getItem("communicate"))
+if (!communicate) {
+  document.location.href = "index.html"
+} else if (communicate.id === undefined) {
+  document.location.href = "index.html"
+}
 
 const productContainer = document.querySelector(".productContainer ")
 const description = document.querySelector("p")
@@ -46,19 +50,21 @@ minus.addEventListener("click", () => {
   addSum.textContent = `Add | ${(communicate.price * quantity.value).toFixed(2)}`
 }) //вычитание и умножение
 
-const Cart = JSON.parse(localStorage.getItem("cart"))
+const cart = JSON.parse(localStorage.getItem("cart"))
 
 addSum.onclick = () => {
-  const found = Cart.find((item) => item.id === communicate.id)
+  const found = cart.find((item) => item.id === communicate.id)
   document.location.href = "cart.html"
   switch (found) {
     case undefined:
-      Cart.push(communicate)
+      cart.push(communicate)
       break
     case found:
       found.quantity += communicate.quantity
       break
   }
-  localStorage.setItem("cart", JSON.stringify(Cart))
+  localStorage.setItem("cart", JSON.stringify(cart))
+  communicate.quantity = 1
+  localStorage.setItem("communicate", JSON.stringify(communicate))
 }
 //сравнение имеющихся продуктов и добавление

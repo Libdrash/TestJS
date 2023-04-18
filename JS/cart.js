@@ -1,10 +1,10 @@
 // КОРЗИНА
-const Cart = JSON.parse(localStorage.getItem("cart"))
+const cart = JSON.parse(localStorage.getItem("cart"))
 const communicate = JSON.parse(localStorage.getItem("communicate"))
 const cartProducts = document.querySelector(".cartContainer")
 
 const showCart = (block) => {
-  block.innerHTML = Cart.map((elem) => {
+  block.innerHTML = cart.map((elem) => {
     const { img, description, material, price, quantity } = elem
     return `<div class="product_cart">
         <a href="product.html"><img alt="productPicture" src="${img}" /></a>
@@ -31,28 +31,28 @@ const plus = document.querySelectorAll("#plus")
 const minus = document.querySelectorAll("#minus")
 Array.from(quantityInputs).map((btn, index) => {
   btn.addEventListener("click", () => {
-    const Cart = JSON.parse(localStorage.getItem("cart"))
-    Cart[index].quantity = +quantityInputs[index].value
+    const cart = JSON.parse(localStorage.getItem("cart"))
+    cart[index].quantity = +quantityInputs[index].value
   })
 })
-localStorage.setItem("cart", JSON.stringify(Cart))
+localStorage.setItem("cart", JSON.stringify(cart))
 
 Array.from(plus).map((btn, index) => {
   btn.addEventListener("click", () => {
-    Cart[index].quantity = +quantityInputs[index].value
-    localStorage.setItem("cart", JSON.stringify(Cart))
+    cart[index].quantity = +quantityInputs[index].value
+    localStorage.setItem("cart", JSON.stringify(cart))
   })
 })
 Array.from(minus).map((btn, index) => {
   btn.addEventListener("click", () => {
-    Cart[index].quantity = +quantityInputs[index].value
-    localStorage.setItem("cart", JSON.stringify(Cart))
-    if (Cart[index].quantity === 0) {
-      Cart.splice(index, 1)
-      for (let i = 0; i < Cart.length; i++) {
-        localStorage.setItem("item" + i, Cart[i])
+    cart[index].quantity = +quantityInputs[index].value
+    localStorage.setItem("cart", JSON.stringify(cart))
+    if (cart[index].quantity === 0) {
+      cart.splice(index, 1)
+      for (let i = 0; i < cart.length; i++) {
+        localStorage.setItem("item" + i, cart[i])
       }
-      localStorage.setItem("cart", JSON.stringify(Cart))
+      localStorage.setItem("cart", JSON.stringify(cart))
       location.reload()
     }
   })
@@ -63,8 +63,8 @@ const totalAfterFee = document.querySelector(".totalAfterFee")
 
 let totalCostStart = 0
 const costProcess = () => {
-  for (let i = 0; i < Cart.length; i++) {
-    const product = Cart[i]
+  for (let i = 0; i < cart.length; i++) {
+    const product = cart[i]
     const { quantity, price } = product
     const cost = quantity * price
     totalCostStart += cost
@@ -78,8 +78,8 @@ const minusPlusValue = document.querySelectorAll(".minusPlusValue")
 Array.from(minusPlusValue).map((btn) => {
   btn.addEventListener("click", () => {
     let totalCost = 0
-    for (let i = 0; i < Cart.length; i++) {
-      const product = Cart[i]
+    for (let i = 0; i < cart.length; i++) {
+      const product = cart[i]
       const { quantity, price } = product
       const cost = quantity * price
       totalCost += cost
@@ -94,11 +94,13 @@ const cart__buttonPay = document.querySelector(".cart__buttonPay")
 const payForThePurchcase = []
 localStorage.setItem("pay", JSON.stringify(payForThePurchcase))
 const pay = JSON.parse(localStorage.getItem("pay"))
-console.log(...Cart)
+
 cart__buttonPay.addEventListener("click", (index) => {
-  pay.push(...Cart)
+  pay.push(...cart)
   localStorage.setItem("pay", JSON.stringify(pay))
-  Cart.splice(index)
-  localStorage.setItem("cart", JSON.stringify(Cart))
+  if (pay.length === 0) return
+  cart.splice(index)
+  localStorage.setItem("cart", JSON.stringify(cart))
   location.reload()
+  alert("Thank You!")
 })

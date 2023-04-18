@@ -70,9 +70,9 @@ if (!communicationGet) {
 if (!cartGet) {
   localStorage.setItem("cart", JSON.stringify(cartOfProducts))
 }
-//начало
-// СТРАНИЦА SEARCH ПРОДУКТОВ
 
+// СТРАНИЦА SEARCH ПРОДУКТОВ
+//полотно продуктов
 const products = JSON.parse(localStorage.getItem("products"))
 
 const searchProducts = document.querySelector(".searchProducts")
@@ -82,7 +82,7 @@ const showSearch = (block) => {
     return `<div class='products'>
     <a><img alt="productPicture" id="productsImg" src="${img}" /></a>
     <button id="heart"></button>
-  <p>${description}</p>
+  <p class="productsDescription">${description}</p>
 <p>${material}</p>
 <div class="counting"><b>&#8364; ${price}</b>
 <span><img alt="iconStar" src="imagesSearch/icon/star.svg"/> ${rating}</span></div>
@@ -90,10 +90,37 @@ const showSearch = (block) => {
   })
 }
 showSearch(searchProducts)
-//полотно продуктов
+
+const productCard = document.querySelectorAll(".products")
+const productsDescription = document.querySelectorAll(".productsDescription")
+const productCardArray = Array.from(productCard)
+
+//инпут
+const searchInput = document.querySelector(".searchInput")
+const searchFilter = (event) => {
+  let target = event.target
+  filtered(target.value)
+}
+searchInput.addEventListener("input", searchFilter)
+
+const filtered = (value) => {
+  let regex = new RegExp(value, "i")
+  Array.from(productsDescription).filter((item, index) =>
+    item.textContent.match(regex)
+      ? changeDisplayBlock(productCardArray[index])
+      : changeDisplayNone(productCardArray[index])
+  )
+}
+const changeDisplayNone = (el) => {
+  console.log(el)
+  el.style.display = "none"
+}
+const changeDisplayBlock = (el) => {
+  console.log(el)
+  el.style.display = "flex"
+}
 
 const communicate = JSON.parse(localStorage.getItem("communicate"))
-
 const btnLike = document.querySelectorAll("#heart")
 Array.from(btnLike).map((btn, index) => {
   if (products[index].isLiked) {
@@ -110,13 +137,10 @@ Array.from(btnLike).map((btn, index) => {
 //изменение понравившихся
 // СТРАНИЦА Коммуникационного ПРОДУКТА
 
-const productCard = document.querySelectorAll(".products")
-
 Array.from(productCard).map((card, index) => {
   card.addEventListener("click", (event) => {
     let target = event.target
     if (target.id != "productsImg") return
-    document.location.href = "product.html"
     communicate.id = products[index].id
     communicate.material = products[index].material
     communicate.img = products[index].img
@@ -125,6 +149,7 @@ Array.from(productCard).map((card, index) => {
     communicate.isLiked = products[index].isLiked
     communicate.quantity = 1
     localStorage.setItem("communicate", JSON.stringify(communicate))
+    document.location.href = "product.html"
   })
 })
 //перенос данных одного продукта на активную карточку
