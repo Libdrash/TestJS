@@ -77,10 +77,13 @@ const products = JSON.parse(localStorage.getItem("products"))
 
 const searchProducts = document.querySelector(".searchProducts")
 const showSearch = (block) => {
-  block.innerHTML = products.map((el) => {
+  products.forEach((el) => {
     const { description, material, price, rating, img } = el
-    return `<div class='products'>
-    <a><img alt="productPicture" id="productsImg" src="${img}" /></a>
+    block.innerHTML += `
+    <div class='products'>
+    <a>
+    <img alt="productPicture" id="productsImg" src="${img}" />
+    </a>
     <button id="heart"></button>
   <p class="productsDescription">${description}</p>
 <p>${material}</p>
@@ -92,6 +95,7 @@ const showSearch = (block) => {
 showSearch(searchProducts)
 
 const productCard = document.querySelectorAll(".products")
+console.log(productCard)
 const productsDescription = document.querySelectorAll(".productsDescription")
 const productCardArray = Array.from(productCard)
 
@@ -105,8 +109,8 @@ searchInput.addEventListener("input", searchFilter)
 
 const filtered = (value) => {
   let regex = new RegExp(value, "i")
-  Array.from(productsDescription).filter((item, index) =>
-    item.textContent.match(regex)
+  products.filter((item, index) =>
+    item.description.match(regex)
       ? changeDisplayBlock(productCardArray[index])
       : changeDisplayNone(productCardArray[index])
   )

@@ -43,7 +43,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
-  color: transparent;
+  color: white;
 }
 .products a img {
   border-radius: 15px;
