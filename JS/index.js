@@ -112,11 +112,9 @@ const filtered = (value) => {
   )
 }
 const changeDisplayNone = (el) => {
-  console.log(el)
   el.style.display = "none"
 }
 const changeDisplayBlock = (el) => {
-  console.log(el)
   el.style.display = "flex"
 }
 
